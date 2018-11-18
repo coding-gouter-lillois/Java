@@ -31,16 +31,12 @@ public class Game {
 				if(playerTry != number){
 					if(playerTry < number){
 						System.out.println("Try a bigger number");
-						
 					} else if(playerTry > number) {
 						System.out.println("Try a smaller number");
-						
 					}
 					
 					playerTries ++;
-				}
-				
-			
+				}		
 		}
 		
 		//Quand « playerTry » = number la boucle se termine donc le joueur gagne
