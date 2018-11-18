@@ -7,14 +7,16 @@ public class Game {
 
 	public static void main(String[] args) {
 		
-		//Création d'un nombre aléatoire
+		//CrÃ©ation d'un nombre alÃ©atoire
 		Random n = new Random();
 		int number = n.nextInt(255);
 		int playerTry = 0;
+		
+		//CrÃ©ation de la variable qui compte les essais des joueurs
 		int playerTries = 0;
 		
 		/*System.out.println("Number is : " + number);*/
-		//Boucle qui s'execute tant que « playerTry » != number
+		//Boucle qui s'execute tant que Â« playerTry Â» != number
 		while(playerTry != number){
 			
 			//La console demande au joueurs d'entrer une valeur
@@ -22,7 +24,7 @@ public class Game {
 			//On initalise la fonction qui scane la console (valeur du joueur)
 			Scanner scan = new Scanner(System.in);
 			
-			//On récupère la veleur donnée par le joueur
+			//On rÃ©cupÃ¨re la veleur donnÃ©e par le joueur
 			playerTry = scan.nextInt();
 			
 			//Aide pour le joueur
@@ -41,13 +43,12 @@ public class Game {
 			
 		}
 		
-		//Quand « playerTry » = number la boucle se termine donc le joueur gagne
+		//Quand Â« playerTry Â» = number la boucle se termine donc le joueur gagne
 		if(playerTries <= 1){
-			System.out.println("Congrats, you found the right number in 1 try!!!");
+			System.out.println("Congrats, you found the right number the first time!!");
 			
 		} else {
 			System.out.println("Congrats, you found the right number in " + playerTries + " tries!");
 		}
 	}
-
 }
