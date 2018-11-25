@@ -8,15 +8,15 @@ public class PlayerPaddle implements Paddle {
     double y;
     double yVel;
     boolean upAccel, downAccel;
-    int player, x;
+    int x;
 
-    PlayerPaddle(int player) {
+    PlayerPaddle(int playerId) {
         upAccel = false;
         downAccel = false;
         y = 210;
         yVel = 0;
 
-        if (player == 1) {
+        if (playerId == 1) {
             x = 20;
         } else {
             x = 660;
@@ -47,7 +47,7 @@ public class PlayerPaddle implements Paddle {
 
         //La raquette bouge
         y += yVel;
-        System.out.println(yVel + "y = " + y);
+        //System.out.println(yVel + "y = " + y);
     }
 
     public void setUpAccel(boolean input) {

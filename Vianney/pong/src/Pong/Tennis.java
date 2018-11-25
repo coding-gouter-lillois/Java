@@ -13,14 +13,14 @@ public class Tennis extends Applet implements Runnable, KeyListener {
     private final int WIDTH = 700, HEIGHT = 500;
 
     //Ajout d'une raquette
-    private PlayerPaddle p1;
+    private PlayerPaddle leftPlayer;
 
     public void init() {
         //On crée la fenêtre selon les tailles choisies précedemment
         this.resize(WIDTH, HEIGHT);
         this.addKeyListener(this);
 
-        p1 = new PlayerPaddle(1);
+        leftPlayer = new PlayerPaddle(1);
 
         Thread thread = new Thread(this);
         thread.start();
@@ -31,7 +31,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
         g.setColor(Color.black);
         //On choisi l'espace rempli par la couleur choisie pour le font d'écran
         g.fillRect(0, 0, WIDTH, HEIGHT);
-        p1.draw(g);
+        leftPlayer.draw(g);
     }
 
     public void update(Graphics g) {
@@ -42,7 +42,7 @@ public class Tennis extends Applet implements Runnable, KeyListener {
     public void run() {
         while (true) {
 
-            p1.move();
+            leftPlayer.move();
 
             repaint();
             try {
@@ -56,19 +56,15 @@ public class Tennis extends Applet implements Runnable, KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_UP) {
-            p1.setUpAccel(true);
+            leftPlayer.setUpAccel(true);
         } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            p1.setDownAccel(true);
+            leftPlayer.setDownAccel(true);
         }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_UP) {
-            p1.setUpAccel(false);
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            p1.setDownAccel(false);
-        }
+        // Call when you release a key, not necessary to implement now.
     }
 
     @Override
