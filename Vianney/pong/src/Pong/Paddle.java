@@ -1,4 +1,4 @@
-package Pong;
+package game;
 
 import java.awt.Graphics;
 
