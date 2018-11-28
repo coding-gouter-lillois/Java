@@ -37,7 +37,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 	private int dx, dy;
 	private boolean up, down, right, left, start; 
 	
-	//Taille de la fenêtre
+	//Taille de la fenÃªtre
 	public static final int WIDTH = 600, HEIGHT = 600;
 	public GamePanel(){
 		setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -212,7 +212,7 @@ public class GamePanel extends JPanel implements Runnable, KeyListener {
 			if(score % 10 == 0){
 				level++;
 				if(level > 10){level = 10;}
-				setFPS(level * 10);
+				setFPS(level * 5);
 			}
 		}
 		
