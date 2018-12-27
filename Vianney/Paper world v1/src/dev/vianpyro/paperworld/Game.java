@@ -45,9 +45,9 @@ public class Game implements Runnable { //"implements Runnable" pour permettre à
 		display = new Display(title, width, height); //Fonction qui appelle la construction de la fenêtre
 		display.getFrame().addKeyListener(keyManager); //On donne l'accès au clavier à la fenêtre
 		Assets.initialisation(); //Initialise les textures du jeu et tous les objets qui en ont une
-		
-		gameCamera = new GameCamera(this, 0, 0);
+
 		handler = new Handler(this);
+		gameCamera = new GameCamera(handler, 0, 0);
 		
 		gameState = new GameState(handler);
 		//menuState = new MenuState(handler);
