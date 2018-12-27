@@ -2,7 +2,7 @@ package dev.vianpyro.paperworld.states;
 
 import java.awt.Graphics;
 
-import dev.vianpyro.paperworld.Game;
+import dev.vianpyro.paperworld.Handler;
 
 public abstract class State {
 	
@@ -16,12 +16,12 @@ public abstract class State {
 	}
 	
 	//Class
-	protected Game game;
+	protected Handler handler;
 	
 	public abstract void tick();
 	public abstract void render(Graphics g); //Permission à la classe "State" de dessiner
 	
-	public State(Game game) {
-		this.game = game;
+	public State(Handler handler) {
+		this.handler = handler;
 	}
 }

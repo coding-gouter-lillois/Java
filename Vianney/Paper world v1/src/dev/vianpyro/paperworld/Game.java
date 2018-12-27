@@ -8,8 +8,6 @@ import dev.vianpyro.paperworld.graphics.Assets;
 import dev.vianpyro.paperworld.graphics.GameCamera;
 import dev.vianpyro.paperworld.inputs.KeyManager;
 import dev.vianpyro.paperworld.states.GameState;
-import dev.vianpyro.paperworld.states.MenuState;
-import dev.vianpyro.paperworld.states.SettingsState;
 import dev.vianpyro.paperworld.states.State;
 
 public class Game implements Runnable { //"implements Runnable" pour permettre à cette classe de faire tourner un programme en boucle 
@@ -25,11 +23,12 @@ public class Game implements Runnable { //"implements Runnable" pour permettre à
 	
 	//États
 	private State gameState;
-	private State menuState;
-	private State settingsState;
+	//private State menuState;
+	//private State settingsState;
 	
-	//Camera
+	//Camera & Handler
 	private GameCamera gameCamera;
+	private Handler handler;
 	
 	//Inputs
 	private KeyManager keyManager;
@@ -48,9 +47,11 @@ public class Game implements Runnable { //"implements Runnable" pour permettre à
 		Assets.initialisation(); //Initialise les textures du jeu et tous les objets qui en ont une
 		
 		gameCamera = new GameCamera(this, 0, 0);
-		gameState = new GameState(this);
-		menuState = new MenuState(this);
-		settingsState = new SettingsState(this);
+		handler = new Handler(this);
+		
+		gameState = new GameState(handler);
+		//menuState = new MenuState(handler);
+		//settingsState = new SettingsState(handler);
 		State.setCurrentState(gameState); //Défini l'état du jeu comme "en jeu"
 	}
 

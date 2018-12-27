@@ -2,12 +2,12 @@ package dev.vianpyro.paperworld.states;
 
 import java.awt.Graphics;
 
-import dev.vianpyro.paperworld.Game;
+import dev.vianpyro.paperworld.Handler;
 
 public class MenuState extends State {
 
-	public MenuState(Game game) {
-		super(game);
+	public MenuState(Handler handler) {
+		super(handler);
 	}
 	
 	public void tick() {

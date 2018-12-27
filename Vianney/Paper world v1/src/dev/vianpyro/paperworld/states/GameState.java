@@ -2,10 +2,8 @@ package dev.vianpyro.paperworld.states;
 
 import java.awt.Graphics;
 
-import dev.vianpyro.paperworld.Game;
-import dev.vianpyro.paperworld.Launcher;
+import dev.vianpyro.paperworld.Handler;
 import dev.vianpyro.paperworld.entities.creatures.Player;
-import dev.vianpyro.paperworld.tiles.Tile;
 import dev.vianpyro.paperworld.worlds.World;
 
 public class GameState extends State {
@@ -13,10 +11,11 @@ public class GameState extends State {
 	private Player player;
 	private World world;
 
-	public GameState(Game game) {
-		super(game);
-		player = new Player(game, 100, 100);
-		world = new World(game, "resources/worlds/world1.lvl");
+	public GameState(Handler handler) {
+		super(handler);
+		world = new World(handler, "resources/worlds/world1.lvl");
+		handler.setWorld(world);
+		player = new Player(handler, 100, 100);
 	}
 	
 	public void tick() {
