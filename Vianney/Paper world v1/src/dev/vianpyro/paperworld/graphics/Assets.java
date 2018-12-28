@@ -11,12 +11,6 @@ public class Assets {
 	
 	public static void initialisation() { //Créatoin de la méthode qui permet de séparer les textures
 
-		//Bordure de la map
-		SpriteSheet borderImages = new SpriteSheet(ImageLoader.loadImage("/textures/border.png")); //Importation des textures
-		border = new BufferedImage[2];
-		border[0] = borderImages.crop(0, 0, width, height);
-		border[1] = borderImages.crop(width, 0, width, height);
-		
 		//Joueur
 		SpriteSheet playerImages = new SpriteSheet(ImageLoader.loadImage("/textures/player.png")); //Importation des textures
 		playerBlack = new BufferedImage[1];
