@@ -4,13 +4,21 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
+import dev.vianpyro.paperworld.user_interfaces.UIManager;
+
 public class MouseManager implements MouseListener, MouseMotionListener {
 
 	public boolean leftPressed, rightPressed, middlePressed;
+	
 	private int mouseX, mouseY;
+	private UIManager uiManager;
 	
 	public MouseManager() {
 		
+	}
+	
+	public void setUIManager(UIManager uiManager) {
+		this.uiManager = uiManager;
 	}
 	
 	//Getters
@@ -55,11 +63,15 @@ public class MouseManager implements MouseListener, MouseMotionListener {
 		} else if(e.getButton() == MouseEvent.BUTTON3) {
 			middlePressed = false;
 		}
+		
+		if(uiManager != null) {uiManager.onMouseRelease(e);}
 	}
 
 	public void mouseMoved(MouseEvent e) {
 		mouseX = e.getX();
 		mouseY = e.getY();
+		
+		if(uiManager != null) {uiManager.onMouseMove(e);}
 	}
 
 	public void mouseDragged(MouseEvent e) {

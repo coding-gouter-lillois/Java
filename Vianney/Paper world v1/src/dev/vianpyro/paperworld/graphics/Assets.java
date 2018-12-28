@@ -7,10 +7,15 @@ public class Assets {
 	private static final int width = 16, height = 16; //Définition de la taille des textures
 	
 	public static BufferedImage water, wood, stone, iron, food, dirt, port, sawmill, career, mine, farm, dirt_path; //Création des objets ayants chacuns une texture propre
-	public static BufferedImage[] playerAnim, playerBlack, border;
+	public static BufferedImage[] playerAnim, playerBlack, border, startButton; //Création des objets ayants des textures animées
 	
 	public static void initialisation() { //Créatoin de la méthode qui permet de séparer les textures
-
+		//Boutons
+		SpriteSheet ui = new SpriteSheet(ImageLoader.loadImage("/textures/user_interfaces/menu.png")); //Importation des textures
+		startButton = new BufferedImage[2];
+		startButton[0] = ui.crop(0, height * 2, width * 8, height * 2); //Création de la texture blanche du bouton de démarrage
+		startButton[1] = ui.crop(0, 0, width * 8, height * 2); //Création de la texture rouge du bouton de démarrage
+		
 		//Joueur
 		SpriteSheet playerImages = new SpriteSheet(ImageLoader.loadImage("/textures/player.png")); //Importation des textures
 		playerBlack = new BufferedImage[1];
