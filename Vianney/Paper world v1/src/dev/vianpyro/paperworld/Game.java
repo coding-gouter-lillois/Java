@@ -7,7 +7,10 @@ import dev.vianpyro.paperworld.display.Display;
 import dev.vianpyro.paperworld.graphics.Assets;
 import dev.vianpyro.paperworld.graphics.GameCamera;
 import dev.vianpyro.paperworld.inputs.KeyManager;
+import dev.vianpyro.paperworld.inputs.MouseManager;
 import dev.vianpyro.paperworld.states.GameState;
+import dev.vianpyro.paperworld.states.MenuState;
+import dev.vianpyro.paperworld.states.SettingsState;
 import dev.vianpyro.paperworld.states.State;
 
 public class Game implements Runnable { //"implements Runnable" pour permettre à cette classe de faire tourner un programme en boucle 
@@ -22,9 +25,7 @@ public class Game implements Runnable { //"implements Runnable" pour permettre à
 	private Graphics g; //Initialisation d'une fonction permettant de dessiner
 	
 	//États
-	private State gameState;
-	//private State menuState;
-	//private State settingsState;
+	public State gameState, menuState, settingsState;
 	
 	//Camera & Handler
 	private GameCamera gameCamera;
@@ -32,31 +33,39 @@ public class Game implements Runnable { //"implements Runnable" pour permettre à
 	
 	//Inputs
 	private KeyManager keyManager;
+	private MouseManager mouseManager;
 	
 	public Game(String title, int width, int height) {
 		this.width = width; //Définir la variable largeur de la méthode égale à celle de la classe
 		this.height = height; //Définir la variable hauteur de la méthode égale à celle de la classe
 		this.title = title; //Définir la variable du titre de la fenêtre de la méthode égale à celle de la classe
 		keyManager = new KeyManager();
-		initialization(); //Appelle la méthode d'initialisation du jeu
+		mouseManager = new MouseManager();
 	}
 	
 	public void initialization() { //Création de la méthode d'initilaisation du jeu
 		display = new Display(title, width, height); //Fonction qui appelle la construction de la fenêtre
 		display.getFrame().addKeyListener(keyManager); //On donne l'accès au clavier à la fenêtre
+		display.getFrame().addMouseListener(mouseManager); //On donne l'accès à la souris à la fenêtre
+		display.getFrame().addMouseMotionListener(mouseManager); //On donne l'accès à la detection du mouvement de la souris à la fenêtre
+		display.getCanvas().addMouseListener(mouseManager); //On donne l'accès à la souris à la fenêtre
+		display.getCanvas().addMouseMotionListener(mouseManager); //On donne l'accès à la detection du mouvement de la souris à la fenêtre
+		
 		Assets.initialisation(); //Initialise les textures du jeu et tous les objets qui en ont une
 
 		handler = new Handler(this);
 		gameCamera = new GameCamera(handler, 0, 0);
 		
 		gameState = new GameState(handler);
-		//menuState = new MenuState(handler);
-		//settingsState = new SettingsState(handler);
-		State.setCurrentState(gameState); //Défini l'état du jeu comme "en jeu"
+		menuState = new MenuState(handler);
+		settingsState = new SettingsState(handler);
+		State.setCurrentState(menuState); //Défini l'état du jeu comme "en jeu"
 	}
 
 	public void run() { //Création de la méthode principal du jeu		
 		
+		initialization(); //Appelle la méthode d'initialisation principale du jeu
+
 		final int maxFramesPerSecond = 60; //Création de la limite d'images par secondes affichées dans le jeu ; le nombre de fois qu'on veut lancer le code par seconde
 		double timePerTick = 1000000000 / maxFramesPerSecond; //Définition du temps à attendre en nano secondes entre chaque execution du code
 		double delta = 0; //Définition du temps avant le rappel des méthodes "tick" et "render"
@@ -90,6 +99,10 @@ public class Game implements Runnable { //"implements Runnable" pour permettre à
 	
 	public KeyManager getKeyManager() {
 		return keyManager;
+	}
+	
+	public MouseManager getMouseManager() {
+		return mouseManager;
 	}
 	
 	public GameCamera getGameCamera() {

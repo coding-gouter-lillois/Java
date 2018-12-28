@@ -2,6 +2,7 @@ package dev.vianpyro.paperworld;
 
 import dev.vianpyro.paperworld.graphics.GameCamera;
 import dev.vianpyro.paperworld.inputs.KeyManager;
+import dev.vianpyro.paperworld.inputs.MouseManager;
 import dev.vianpyro.paperworld.worlds.World;
 
 public class Handler {
@@ -19,6 +20,10 @@ public class Handler {
 	
 	public KeyManager getKeyManager() {
 		return game.getKeyManager();
+	}
+	
+	public MouseManager getMouseManager() {
+		return game.getMouseManager();
 	}
 	
 	public int getWidth() {
