@@ -28,7 +28,7 @@ public abstract class Creature extends Entity {
 			
 			if(canWalkOnTile(dx, (int)(y + bounds.y) / Tile.DEFAULT_TILE_HEIGHT) && 
 				canWalkOnTile(dx, (int)(y + bounds.y + bounds.height) / Tile.DEFAULT_TILE_HEIGHT)) {
-				x += xMove;
+				x += xMove * speed;
 			} else {
 				x = dx * Tile.DEFAULT_TILE_WIDTH - bounds.x - bounds.width - 1;
 			}
@@ -37,7 +37,7 @@ public abstract class Creature extends Entity {
 			
 			if(canWalkOnTile(dx, (int)(y + bounds.y) / Tile.DEFAULT_TILE_HEIGHT) && 
 				canWalkOnTile(dx, (int)(y + bounds.y + bounds.height) / Tile.DEFAULT_TILE_HEIGHT)) {
-				x += xMove;
+				x += xMove * speed;
 			} else {
 				x = dx * Tile.DEFAULT_TILE_WIDTH + Tile.DEFAULT_TILE_WIDTH - bounds.x;
 			}
@@ -50,7 +50,7 @@ public abstract class Creature extends Entity {
 			
 			if(canWalkOnTile((int)(x + bounds.x) / Tile.DEFAULT_TILE_WIDTH, dy) &&
 				canWalkOnTile((int)(x + bounds.x + bounds.width) / Tile.DEFAULT_TILE_WIDTH, dy)) {
-				y += yMove;
+				y += yMove * speed;
 			} else {
 				y = dy * Tile.DEFAULT_TILE_HEIGHT + Tile.DEFAULT_TILE_HEIGHT - bounds.y;
 			}
@@ -59,7 +59,7 @@ public abstract class Creature extends Entity {
 			
 			if(canWalkOnTile((int)(x + bounds.x) / Tile.DEFAULT_TILE_WIDTH, dy) &&
 				canWalkOnTile((int)(x + bounds.x + bounds.width) / Tile.DEFAULT_TILE_WIDTH, dy)) {
-				y += yMove;
+				y += yMove * speed;
 			} else {
 				y = dy * Tile.DEFAULT_TILE_HEIGHT - bounds.y - bounds.height - 1;
 			}

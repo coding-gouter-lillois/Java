@@ -7,14 +7,17 @@ public class Assets {
 	private static final int width = 16, height = 16; //Définition de la taille des textures
 	
 	public static BufferedImage water, wood, stone, iron, food, dirt, port, sawmill, career, mine, farm, dirt_path; //Création des objets ayants chacuns une texture propre
-	public static BufferedImage[] playerAnim, playerBlack, border, startButton; //Création des objets ayants des textures animées
+	public static BufferedImage[] playerAnim, playerBlack, border, button_start, button_settings; //Création des objets ayants des textures animées
 	
 	public static void initialisation() { //Créatoin de la méthode qui permet de séparer les textures
 		//Boutons
 		SpriteSheet ui = new SpriteSheet(ImageLoader.loadImage("/textures/user_interfaces/menu.png")); //Importation des textures
-		startButton = new BufferedImage[2];
-		startButton[0] = ui.crop(0, height * 2, width * 8, height * 2); //Création de la texture blanche du bouton de démarrage
-		startButton[1] = ui.crop(0, 0, width * 8, height * 2); //Création de la texture rouge du bouton de démarrage
+		button_start = new BufferedImage[2];
+		button_start[0] = ui.crop(0, 0, width * 8, height * 2); //Création de la texture grise du bouton de démarrage
+		button_start[1] = ui.crop(0, height * 2, width * 8, height * 2); //Création de la texture bleue du bouton de démarrage
+		button_settings = new BufferedImage[2];
+		button_settings[0] = ui.crop(0, height * 4, width * 8, height * 2); //Création de la texture grise du bouton d'options
+		button_settings[1] = ui.crop(0, height * 6, width * 8, height * 2); //Création de la texture bleue du bouton d'options		
 		
 		//Joueur
 		SpriteSheet playerImages = new SpriteSheet(ImageLoader.loadImage("/textures/player.png")); //Importation des textures
