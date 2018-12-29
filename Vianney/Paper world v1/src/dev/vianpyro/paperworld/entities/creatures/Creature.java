@@ -6,14 +6,16 @@ import dev.vianpyro.paperworld.tiles.Tile;
 
 public abstract class Creature extends Entity {
 
-	public static final float DEFAULT_HEALTH = 10.0f, DEFAULT_SPEED = 1.0f;
+	public static final float DEFAULT_SPEED = 1.0f, DEFAULT_ATTACK_DAMAGES = 1.0f;
+	public static final int DEFAULT_ATTACK_COOLDOWN = 250;
 	
-	protected float health, speed, xMove, yMove;
+	protected float speed, attackDamages, attackCooldown, xMove, yMove;
 	
 	public Creature(Handler handler, float x, float y, int width, int height) {
 		super(handler, x, y, width, height);
-		health = DEFAULT_HEALTH;
 		speed = DEFAULT_SPEED;
+		attackDamages = DEFAULT_ATTACK_DAMAGES;
+		attackCooldown = DEFAULT_ATTACK_COOLDOWN;
 		xMove = yMove = 0;
 	}
 	
@@ -28,7 +30,7 @@ public abstract class Creature extends Entity {
 			
 			if(canWalkOnTile(dx, (int)(y + bounds.y) / Tile.DEFAULT_TILE_HEIGHT) && 
 				canWalkOnTile(dx, (int)(y + bounds.y + bounds.height) / Tile.DEFAULT_TILE_HEIGHT)) {
-				x += xMove * speed;
+				x += xMove;
 			} else {
 				x = dx * Tile.DEFAULT_TILE_WIDTH - bounds.x - bounds.width - 1;
 			}
@@ -37,7 +39,7 @@ public abstract class Creature extends Entity {
 			
 			if(canWalkOnTile(dx, (int)(y + bounds.y) / Tile.DEFAULT_TILE_HEIGHT) && 
 				canWalkOnTile(dx, (int)(y + bounds.y + bounds.height) / Tile.DEFAULT_TILE_HEIGHT)) {
-				x += xMove * speed;
+				x += xMove;
 			} else {
 				x = dx * Tile.DEFAULT_TILE_WIDTH + Tile.DEFAULT_TILE_WIDTH - bounds.x;
 			}
@@ -50,7 +52,7 @@ public abstract class Creature extends Entity {
 			
 			if(canWalkOnTile((int)(x + bounds.x) / Tile.DEFAULT_TILE_WIDTH, dy) &&
 				canWalkOnTile((int)(x + bounds.x + bounds.width) / Tile.DEFAULT_TILE_WIDTH, dy)) {
-				y += yMove * speed;
+				y += yMove;
 			} else {
 				y = dy * Tile.DEFAULT_TILE_HEIGHT + Tile.DEFAULT_TILE_HEIGHT - bounds.y;
 			}
@@ -59,7 +61,7 @@ public abstract class Creature extends Entity {
 			
 			if(canWalkOnTile((int)(x + bounds.x) / Tile.DEFAULT_TILE_WIDTH, dy) &&
 				canWalkOnTile((int)(x + bounds.x + bounds.width) / Tile.DEFAULT_TILE_WIDTH, dy)) {
-				y += yMove * speed;
+				y += yMove;
 			} else {
 				y = dy * Tile.DEFAULT_TILE_HEIGHT - bounds.y - bounds.height - 1;
 			}

@@ -20,6 +20,10 @@ public class Career extends StaticEntity {
 	public void tick() {
 		
 	}
+	
+	public void die() {
+		
+	}
 
 	public void render(Graphics g) {
 		g.drawImage(Assets.career, (int)(x - handler.getGameCamera().getxOffset()), (int)(y - handler.getGameCamera().getyOffset()), width, height, null);

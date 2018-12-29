@@ -6,13 +6,15 @@ import dev.vianpyro.paperworld.Handler;
 import dev.vianpyro.paperworld.Launcher;
 import dev.vianpyro.paperworld.entities.EntityManager;
 import dev.vianpyro.paperworld.entities.creatures.Player;
+import dev.vianpyro.paperworld.entities.statics.structures.Career;
 import dev.vianpyro.paperworld.tiles.Tile;
 import dev.vianpyro.paperworld.utils.Utils;
 
 public class World {
 
 	private Handler handler;
-	private int width, height, spawnX = Launcher.WIDTH / 2, spawnY = Launcher.HEIGHT / 2;
+	private int width, height, spawnX = (Launcher.WIDTH / (2 * Tile.DEFAULT_TILE_WIDTH)) * Tile.DEFAULT_TILE_WIDTH, 
+								spawnY = (Launcher.HEIGHT / (2 * Tile.DEFAULT_TILE_HEIGHT)) * Tile.DEFAULT_TILE_HEIGHT;
 	private int[][] tiles;
 	//Entitées
 	private EntityManager entityManager;
@@ -20,7 +22,7 @@ public class World {
 	public World(Handler handler, String path) {
 		this.handler = handler;
 		entityManager = new EntityManager(handler, new Player(handler, spawnX, spawnY));
-//		entityManager.addEntity(new Career(handler, 100, 250));
+		entityManager.addEntity(new Career(handler, 100, 250));
 		
 		loadWorld(path);
 		
