@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 import dev.vianpyro.paperworld.Handler;
+import dev.vianpyro.paperworld.tiles.Tile;
 
 public abstract class Entity {
 	
@@ -17,8 +18,8 @@ public abstract class Entity {
 	
 	public Entity(Handler handler, float x, float y, int width, int height) {
 		this.handler = handler;
-		this.x = x;
-		this.y = y;
+		this.x = x * Tile.DEFAULT_TILE_WIDTH;
+		this.y = y * Tile.DEFAULT_TILE_HEIGHT;
 		this.width = width;
 		this.height = height;
 		health = DEFAULT_HEALTH;

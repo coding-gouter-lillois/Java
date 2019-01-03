@@ -17,7 +17,6 @@ public class Tile {
 						dirtTile = new Dirt(5),
 						portStructure = new PortStructure(128),
 						sawmillStructure = new SawmillStructure(129),
-						carrerStructure = new CareerStructure(130),
 						mineStruture = new MineStructure(131),
 						farmStructure = new FarmStructure(132),
 						dirt_pathStructure = new DirtPathStructure(133);
