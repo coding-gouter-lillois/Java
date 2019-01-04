@@ -11,11 +11,12 @@ public class Logger {
 	
 	private static String date = new SimpleDateFormat("yyyy-MM-dd hh-mm-ss-ms").format(new Date());;
 	private static String time = new SimpleDateFormat("hh:mm:ss").format(new Date());;
-	private static File logFile = new File("C://Users/viann/Desktop/" + date + ".log");
-	private static File gameMainFolder = new File("C://Program Files (x86)/Paper game/");
+	private static File logFile, gameMainFolder;
 	
 	public static void initialisation() {
 		System.out.println(date);
+		logFile = new File("C://Program Files (x86)/Paper game/" + date + ".log");
+		gameMainFolder = new File("C://Program Files (x86)/Paper game/");
 		
 		if(!gameMainFolder.exists()) {
 			gameMainFolder.mkdir();
