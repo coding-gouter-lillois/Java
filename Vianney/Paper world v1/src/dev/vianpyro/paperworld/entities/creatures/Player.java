@@ -54,8 +54,8 @@ public class Player extends Creature {
 		
 		Rectangle collisionBounds = getCollisionBounds(0, 0);		
 		Rectangle attackRectangle = new Rectangle();
-		attackRectangle.width = Tile.DEFAULT_TILE_WIDTH;
-		attackRectangle.height = Tile.DEFAULT_TILE_HEIGHT;
+		attackRectangle.width = Tile.DEFAULT_TILE_WIDTH / 2;
+		attackRectangle.height = Tile.DEFAULT_TILE_HEIGHT / 2;
 		
 		if(handler.getKeyManager().attack && KeyManager.lookingDirection == 0) {
 			attackRectangle.x = collisionBounds.x + (collisionBounds.width / 2) - (attackRectangle.width / 2);
