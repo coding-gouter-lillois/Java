@@ -17,7 +17,11 @@ public class Launcher {
 		HEIGHT = Math.round((int)screenSize.getHeight() / 9) * 8; //Définition de la hauteur de la fenêre en fonction des dimentions de l'écran de l'utilisateur
 		SQUARE = WIDTH / 25; //Définition de la taille d'une case du jeu en fonction de la largeur de la largeur de la fenêtre 
 		
+		Logger.initialisation();
+		Logger.log("Logs initialisated");
 		Game game = new Game("Paper world V:" + versionType + "-" + version, WIDTH, HEIGHT); //Fonction qui appelle la construction du jeu
+		Logger.log("Game initialisated");
 		game.start(); //Appelle la méthode "start" de a classe "game" ; qui lancera le jeu
+		Logger.log("Game starting");
 	}
 }

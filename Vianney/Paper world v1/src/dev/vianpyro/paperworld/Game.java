@@ -142,16 +142,24 @@ public class Game implements Runnable { //"implements Runnable" pour permettre à
 	}
 	
 	public synchronized void start() { //Création de la méthode synchronized (en lien directe avec un thread) de commencement du jeu
-		if(running) {return;} //Ne rien faire si le jeu est déjà défini comme lancé
+		if(running) { //Ne rien faire si le jeu est déjà défini comme lancé
+			Logger.log("Game already started");
+			return;
+		} 
 		running = true; //Définir le jeu comme lancé
 		thread = new Thread(this); //Initialisation du mini programme autonome qui fonctionne séparemment de la calsse principale (main), de cette classe (this)
 		thread.start(); //Activation du mini programme autonome qui fonctionne séparemment de la calsse principale (main) qui appelle la méthode "run"
+		Logger.log("Game started");
 	}
 	
 	public synchronized void stop() { //Création de la méthode synchronized (en lien directe avec un thread) d'arrêt du jeu
-		if(!running) {return;} //Ne rien faire si le jeu est déjà arrêté
+		if(!running) { //Ne rien faire si le jeu est déjà arrêté
+			Logger.log("Game already stoped");
+			return;
+		}
 		running = false; //Définir le jeu commme arrêté
 		try {
+			Logger.log("Gamed stoped");
 			thread.join(); //Arrête simplement le mini programme autonome qui fonctionne séparemment de la calsse principale (main)
 		} catch (InterruptedException e) {
  			e.printStackTrace();
